@@ -76,21 +76,23 @@ public:
         int start = 0;
         int end = n - 1;
         
-        
         while(start <= end) {
-            if(nums.at(start) <= (nums.at(end)) {
-                return n;
+            if(nums.at(start) <= (nums.at(end))) {
+                return nums.at(start);
             }
             
             int mid = (start + end) / 2;
             int prev = (mid - 1 + n) % n;
             int next = (mid + 1) % n;
                
-            if(nums.at(mid) <= nums.at(prev) && nums.at(mid) <= nums.at(next)) {
-                return mid;
+            if(nums.at(mid) <= nums.at(prev) && nums.at(mid) <= nums.at(next))                  {
+                return nums.at(mid);
             }
             
-            if(nums.at(start) <= nums.at(prev))
+            else if(nums.at(start) <= nums.at(mid)) start = mid + 1;
+            else if(nums.at(mid) <= nums.at(end)) end = mid - 1;                   
+            }
+        
+        return -1;
         }
-                                  
-}  
+};
