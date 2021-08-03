@@ -1,3 +1,5 @@
+// Binary Search
+
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
@@ -17,6 +19,7 @@ public:
     }
 };
 
+// Find First and Last Position of Element in Sorted Array
 
 class Solution {
 public:
