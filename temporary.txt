@@ -68,3 +68,23 @@ public:
         return v;
     }
 };
+
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int n = nums.size();
+        int start = 0;
+        int end = n - 1;
+        
+        
+        while(start <= end) {
+            if(nums.at(start) <= (nums.at(end)) {
+                return n;
+            }
+            
+            int mid = (start + end) / 2;
+            int prev = (mid - 1 
+            if(nums.at(mid -
+        }
+                                  
+}  
