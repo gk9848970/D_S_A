@@ -83,8 +83,14 @@ public:
             }
             
             int mid = (start + end) / 2;
-            int prev = (mid - 1 
-            if(nums.at(mid -
+            int prev = (mid - 1 + n) % n;
+            int next = (mid + 1) % n;
+               
+            if(nums.at(mid) <= nums.at(prev) && nums.at(mid) <= nums.at(next)) {
+                return mid;
+            }
+            
+            if(nums.at(start) <= nums.at(prev))
         }
                                   
 }  
