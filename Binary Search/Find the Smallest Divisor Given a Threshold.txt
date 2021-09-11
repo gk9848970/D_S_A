@@ -1,0 +1,38 @@
+// 1283. Find the Smallest Divisor Given a Threshold
+
+int smallestDivisor(vector<int>& nums, int threshold) {
+        int max = maxArray(nums) + 1;
+        int start = 1, end = max;
+        
+	// start <= end makes loop run forever
+
+        while(start < end) {
+            int mid = start + ((end - start) / 2);
+
+            if(arrayChecker(nums, threshold, mid)) end = mid;
+            else start = mid + 1;
+        }
+        return start;
+        
+    }
+    
+    bool arrayChecker(vector<int>& nums, int threshold, int divider) {
+        int sum = 0;
+        for(int d: nums) {
+            sum += ceilDivider(d, divider);
+        }
+        return sum <= threshold ? true : false;
+    }
+    
+    int ceilDivider(int n, int divider) {
+        if(n % divider == 0) return n/divider;
+        else return n/divider + 1;
+    }
+    
+    int maxArray(vector<int>& arr) {
+        int max = arr[0];
+        for(auto b: arr) {
+            if(b > max) max = b;
+        }
+        return max;
+    }

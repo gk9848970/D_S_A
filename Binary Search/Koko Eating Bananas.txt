@@ -1,0 +1,35 @@
+// 875. Koko Eating Bananas
+
+int minEatingSpeed(vector<int>& piles, int h) {
+     int start = 1, end = maxArray(piles);
+        
+        while(start < end) {
+            int mid = start + ((end - start) / 2);
+
+            if(arrayChecker(piles, h, mid)) end = mid;
+            else start = mid + 1;
+        }
+        return start;
+    }
+    
+    int maxArray(vector<int>& arr) {
+        int max = arr[0];
+        for(auto b: arr) {
+            if(b > max) max = b;
+        }
+        return max;
+    }
+    
+    int ceilDivider(int n, int divider) {
+        if(n % divider == 0) return n/divider;
+        else return n/divider + 1;
+    }
+    
+    bool arrayChecker(vector<int>& piles, int hours, int eatSpeed) {
+        int hrsCount = 0, sum = 0;
+        for(int w: piles) {
+            hrsCount += ceilDivider(w, eatSpeed);
+        }
+        
+        return hrsCount <= hours ? true : false;
+    }

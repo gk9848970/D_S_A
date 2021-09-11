@@ -1,0 +1,42 @@
+// 1011. Capacity To Ship Packages Within D Days
+
+int shipWithinDays(vector<int>& weights, int days) {
+        int start = maxArray(weights), end = sumArray(weights);
+        
+        while(start < end) {
+            int mid = start + ((end - start) / 2);
+
+            if(arrayChecker(weights, days, mid)) end = mid;
+            else start = mid + 1;
+        }
+        return start;
+    }
+    
+    int maxArray(vector<int>& arr) {
+        int max = arr[0];
+        for(auto b: arr) {
+            if(b > max) max = b;
+        }
+        return max;
+    }
+    
+    int sumArray(vector<int>& arr) {
+        int sum = 0;
+        for(auto a: arr) {
+            sum += a;
+        }
+        return sum;
+    }
+    
+    bool arrayChecker(vector<int>& weights, int days, int minCapacity) {
+        int count = 1, sum = 0;
+        for(int w: weights) {
+            sum += w;
+            if(sum > minCapacity) {
+                count++;
+                sum = w;
+            }
+        }
+        
+        return count <= days ? true : false;
+    } 
